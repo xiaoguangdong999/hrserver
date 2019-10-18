@@ -64,6 +64,7 @@ public class EmpBasicController {
 
     @RequestMapping(value = "/emp", method = RequestMethod.POST)
     public RespBean addEmp(Employee employee) {
+        System.out.println("开始日期：---------------》"+employee.getBeginDate());
         if (empService.addEmp(employee) == 1) {
             List<Position> allPos = positionService.getAllPos();
             for (Position allPo : allPos) {
@@ -75,6 +76,7 @@ public class EmpBasicController {
                     javaMailSender, templateEngine,emailAddress));
             return RespBean.ok("添加成功!");
         }
+        System.out.println("------------------------");
         return RespBean.error("添加失败!");
     }
 
